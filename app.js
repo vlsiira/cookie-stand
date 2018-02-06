@@ -7,18 +7,21 @@ const airportLoc = {
     getRandomNum: function () {
         this.minHrlyCust = Math.ceil(this.minHrlyCust);
         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
+        // for loop not pushing to array.  I don't know why
         for (let i = 0; i < this.hourOfDay.length; i++) {
             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
+        }
+        for (let i = 0; i < airportLoc.hourOfDay.length; i++) {
+            const newLi = document.createElement('li');
+            newLi.textContent = airportLoc.hourOfDay[i] + airportLoc.amntCookiesPurch[i];
+            airport.appendChild(newLi);
         }
     },
     amntCookiesPurch: [],
     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
-console.log(airportLoc.getRandomNum());
 console.log(airportLoc.amntCookiesPurch);
-
-//Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust;
-
+console.log(airportLoc.hourOfDay);
 
 const pioneerSqLoc = {
     minHrlyCust: 3,
@@ -29,6 +32,11 @@ const pioneerSqLoc = {
         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
         for (let i = 0; i < this.hourOfDay.length; i++) {
             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
+        }
+        for(let i = 0; i < pioneerSqLoc.hourOfDay.length; i++) {
+            const secondLi = document.createElement('li');
+            secondLi.textContent = pioneerSqLoc.hourOfDay[i] + pioneerSqLoc.amntCookiesPurch[i];
+            pioneerSq.appendChild(secondLi);
         }
     },
     amntCookiesPurch: [],
@@ -47,6 +55,11 @@ const powellsLoc = {
         for (let i = 0; i < this.hourOfDay.length; i++) {
             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
         }
+        for (let i = 0; i < powellsLoc.hourOfDay.length; i++) {
+            const thirdLi = document.createElement('li');
+            thirdLi.textContent = powellsLoc.hourOfDay[i] + powellsLoc.amntCookiesPurch[i];
+            powells.appendChild(thirdLi);
+        }
     },
     amntCookiesPurch: [],
     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
@@ -63,6 +76,11 @@ const stJohnsLoc = {
         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
         for (let i = 0; i < this.hourOfDay.length; i++) {
             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
+        }
+        for (let i = 0; i < stJohnsLoc.hourOfDay.length; i++) {
+            const fourthLi = document.createElement('li');
+            fourthLi.textContent = stJohnsLoc.hourOfDay[i] + stJohnsLoc.amntCookiesPurch[i];
+            stJohns.appendChild(fourthLi);
         }
     },
     amntCookiesPurch: [],
@@ -81,10 +99,14 @@ const waterfrontLoc = {
         for (let i = 0; i < this.hourOfDay.length; i++) {
             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
         }
+        for (let i = 0; i < waterfrontLoc.hourOfDay.length; i++) {
+            const fifthLi = document.createElement('li');
+            fifthLi.textContent = waterfrontLoc.hourOfDay[i] + waterfrontLoc.amntCookiesPurch[i];
+            waterfront.appendChild(fifthLi);
+        }
     },
     amntCookiesPurch: [],
     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
 console.log(waterfrontLoc.getRandomNum());
 console.log(waterfrontLoc.amntCookiesPurch);
-

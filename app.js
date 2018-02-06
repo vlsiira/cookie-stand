@@ -7,10 +7,18 @@ const airportLoc = {
     getRandomNum: function () {
         this.minHrlyCust = Math.ceil(this.minHrlyCust);
         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-        return Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust;
-    }
+        for (let i = 0; i < this.hourOfDay.length; i++) {
+            this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
+        }
+    },
+    amntCookiesPurch: [],
+    hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
 console.log(airportLoc.getRandomNum());
+console.log(airportLoc.amntCookiesPurch);
+
+//Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust;
+
 
 const pioneerSqLoc = {
     minHrlyCust: 3,
@@ -19,10 +27,15 @@ const pioneerSqLoc = {
     getRandomNum: function () {
         this.minHrlyCust = Math.ceil(this.minHrlyCust);
         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-        return Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust;
-    }
+        for (let i = 0; i < this.hourOfDay.length; i++) {
+            this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
+        }
+    },
+    amntCookiesPurch: [],
+    hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
 console.log(pioneerSqLoc.getRandomNum());
+console.log(pioneerSqLoc.amntCookiesPurch);
 
 const powellsLoc = {
     minHrlyCust: 11,
@@ -31,10 +44,15 @@ const powellsLoc = {
     getRandomNum: function () {
         this.minHrlyCust = Math.ceil(this.minHrlyCust);
         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-        return Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust;
-    }
+        for (let i = 0; i < this.hourOfDay.length; i++) {
+            this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
+        }
+    },
+    amntCookiesPurch: [],
+    hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
 console.log(powellsLoc.getRandomNum());
+console.log(powellsLoc.amntCookiesPurch);
 
 const stJohnsLoc = {
     minHrlyCust: 20,
@@ -43,10 +61,15 @@ const stJohnsLoc = {
     getRandomNum: function () {
         this.minHrlyCust = Math.ceil(this.minHrlyCust);
         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-        return Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust;
-    }
+        for (let i = 0; i < this.hourOfDay.length; i++) {
+            this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
+        }
+    },
+    amntCookiesPurch: [],
+    hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
 console.log(stJohnsLoc.getRandomNum());
+console.log(stJohnsLoc.amntCookiesPurch);
 
 const waterfrontLoc = {
     minHrlyCust: 2,
@@ -55,8 +78,13 @@ const waterfrontLoc = {
     getRandomNum: function () {
         this.minHrlyCust = Math.ceil(this.minHrlyCust);
         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-        return Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust;
-    }
+        for (let i = 0; i < this.hourOfDay.length; i++) {
+            this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
+        }
+    },
+    amntCookiesPurch: [],
+    hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
 console.log(waterfrontLoc.getRandomNum());
+console.log(waterfrontLoc.amntCookiesPurch);
 

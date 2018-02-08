@@ -1,31 +1,11 @@
 'use strict';
 
-// const airportLoc = {
-//     minHrlyCust: 23,
-//     maxHrlyCust: 65,
-//     avgCookiesCust: 6.3,
-//     getRandomNum: function () {
-//         this.minHrlyCust = Math.ceil(this.minHrlyCust);
-//         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-//         for (let i = 0; i < this.hourOfDay.length; i++) {
-//             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
-//         }
-//         for (let i = 0; i < airportLoc.hourOfDay.length; i++) {
-//             const airport = document.getElementById('airport');
-//             const newLi = document.createElement('li');
-//             newLi.textContent = airportLoc.hourOfDay[i] + airportLoc.amntCookiesPurch[i];
-//             airport.appendChild(newLi);
-//         }
-//     },
-//     amntCookiesPurch: [],
-//     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
-// };
-// airportLoc.getRandomNum();
-// console.log(airportLoc.amntCookiesPurch);
-// console.log(airportLoc.hourOfDay);
+// TODO - Move Pioneer Square line under Airport line.  I think I need to do something with
+//        nextSibling and an array, in the second for loop of the calc function.
+//      - Create instances of other locations, make sure they look right.
+//      - Calculate totals and add to table.
 
 ///////////////Constructor/////////////////////////////////////////////////
-
 function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
     this.minHrlyCust = minHrlyCust;
     this.maxHrlyCust = maxHrlyCust;
@@ -34,29 +14,26 @@ function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
     this.amntCookiesPurch = [];
 }
 
-// This method was working, then it stopped working (I got undefined when calling airportLoc.calc();
-// in console).  Then I added the return, and I got an array when calling the method, but it's not
-// working the way it's supposed to.
-
-// ^^^TODO push random customer number * avg cookie number into amount cookies array
 CookieStand.prototype.calc = function () {
     let min = Math.ceil(this.minHrlyCust);
     let max = Math.floor(this.maxHrlyCust);
     let hrlySale;
 
     this.amntCookiesPurch.push(this.storeName);
-    //for (let i = 0; i < this.hourOfDay.length; i++) {
-        for (let i = 0; i < 15; i++) {
-            hrlySale = Math.floor((Math.floor(Math.random() * (max - min)) + min) * this.avgCookiesCust);
-            this.amntCookiesPurch.push(hrlySale);
-        }
+    for (let i = 0; i < 15; i++) {
+        hrlySale = Math.floor((Math.floor(Math.random() * (max - min)) + min) * this.avgCookiesCust);
+        this.amntCookiesPurch.push(hrlySale);
+    }
+    for (let i = 0; i < 16; i++) {
+        const tableBody = document.querySelector('tbody');
+        const newTd = document.createElement('td');
+        newTd.textContent = this.amntCookiesPurch[i];
+        tableBody.appendChild(newTd);
+    }
+}
+
+CookieStand.prototype.makeTableHeading = function () {
         const hour = ['Store', '6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
-        for (let i = 0; i < hour.length; i++) {
-            const tableBody = document.querySelector('tbody');
-            const newTd = document.createElement('td');
-            newTd.textContent = this.amntCookiesPurch[i];
-            tableBody.appendChild(newTd);
-         }
         for (let i = 0; i < hour.length; i++) {
             const tableTopRow = document.getElementById('tableTopRow');
             const newTh = document.createElement('th');
@@ -65,39 +42,20 @@ CookieStand.prototype.calc = function () {
         }
 }
 
-// CookieStand.prototype.list = function () {
-//     for (let i = 0; i < 15; i++) {
-//         const airport = document.getElementById('airport');
-//         const newLi = document.createElement('li');
-//         newLi.textContent = this.hourOfDay[i] + this.amntCookiesPurch[i];
-//         airport.appendChild(newLi);
-//     }
-// }
-
-CookieStand.prototype.addToArr = function ()  {
-    const tableLoc = ['Airport', 'Pioneer Square', 'Powell\'s', 'St. John\'s', 'Waterfront'];
-    for (let i = 0; i < tableLoc.length; i++) {
-        this.amntCookiesPurch.push(tableLoc);
-    }
-
-
-    //this.amntCookiesPurch.push('Airport');
-}
-// ^^^TODO make the above info appear in list form
-
 const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');
 airportLoc.calc();
-//airportLoc.list();
-airportLoc.addToArr();
+airportLoc.makeTableHeading();
 
 const pioneerSqLoc = new CookieStand(3, 24, 1.2, "Pioneer Square");
 pioneerSqLoc.calc();
-//pioneerSqLoc.list();
+
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-
 //const tableIds = ['tableHeading', 'tableAirport', 'tablePiSq', 'tablePowells', 'tableStJohns', 'tableWaterfront'];
+//pioneerSqLoc.list();
+//airportLoc.list();
+//airportLoc.addToArr();
 
 
 // for (let i = 0; i < hour.length; i++) {
@@ -244,3 +202,48 @@ pioneerSqLoc.calc();
 //const hourOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
         //this.amntCookiesPurch.push((Math.floor(Math.random() * (max - min + 1)) + min) * Math.round(this.avgCookiesCust));
 ///
+// This method was working, then it stopped working (I got undefined when calling airportLoc.calc();
+// in console).  Then I added the return, and I got an array when calling the method, but it's not
+// working the way it's supposed to.
+
+// DONT NEED
+// CookieStand.prototype.addToArr = function ()  {
+//     const tableLoc = ['Airport', 'Pioneer Square', 'Powell\'s', 'St. John\'s', 'Waterfront'];
+//     for (let i = 0; i < tableLoc.length; i++) {
+//         this.amntCookiesPurch.push(tableLoc);
+//     }
+// }
+// ^^^T
+// CookieStand.prototype.list = function () {
+//     for (let i = 0; i < 15; i++) {
+//         const airport = document.getElementById('airport');
+//         const newLi = document.createElement('li');
+//         newLi.textContent = this.hourOfDay[i] + this.amntCookiesPurch[i];
+//         airport.appendChild(newLi);
+//     }
+// }
+        //for (let i = 0; i < this.hourOfDay.length; i++) {
+// const airportLoc = {
+//     minHrlyCust: 23,
+//     maxHrlyCust: 65,
+//     avgCookiesCust: 6.3,
+//     getRandomNum: function () {
+//         this.minHrlyCust = Math.ceil(this.minHrlyCust);
+//         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
+//         for (let i = 0; i < this.hourOfDay.length; i++) {
+//             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
+//         }
+//         for (let i = 0; i < airportLoc.hourOfDay.length; i++) {
+//             const airport = document.getElementById('airport');
+//             const newLi = document.createElement('li');
+//             newLi.textContent = airportLoc.hourOfDay[i] + airportLoc.amntCookiesPurch[i];
+//             airport.appendChild(newLi);
+//         }
+//     },
+//     amntCookiesPurch: [],
+//     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
+// };
+// airportLoc.getRandomNum();
+// console.log(airportLoc.amntCookiesPurch);
+//console.log(airportLoc.hourOfDay);
+// 

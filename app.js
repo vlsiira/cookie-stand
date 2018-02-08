@@ -1,9 +1,15 @@
 'use strict';
 
-// TODO - Move Pioneer Square line under Airport line.  I think I need to do something with
-//        nextSibling and an array, in the second for loop of the calc function.
-//      - Create instances of other locations, make sure they look right.
-//      - Calculate totals and add to table.
+// TODO - add input field for each data piece in html
+//           - does this mean every square in the table is its own data piece?  probably not
+//           - or, are the data pieces the parameters from the constructor?
+//      - I should probably figure out what this form is actually supposed to do
+//           - now I sort of remember, it's supposed to let Pat add new stores.  So, Pat will
+//             add info into the form, and then the form will add that info into the table
+//      - returning to issues in first bullet point:
+//           - data pieces are the parameters from the constructor.  Now it makes sense.
+//             Since the form adds a new row to the table, Pat needs to provide the same info
+//             that he provided before, that created it in the first placce.
 
 ///////////////Constructor/////////////////////////////////////////////////
 function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
@@ -18,7 +24,7 @@ CookieStand.prototype.calc = function () {
     let min = Math.ceil(this.minHrlyCust);
     let max = Math.floor(this.maxHrlyCust);
     let hrlySale;
-
+    
     this.amntCookiesPurch.push(this.storeName);
     for (let i = 0; i < 15; i++) {
         hrlySale = Math.floor((Math.floor(Math.random() * (max - min)) + min) * this.avgCookiesCust);
@@ -33,13 +39,13 @@ CookieStand.prototype.calc = function () {
 }
 
 CookieStand.prototype.makeTableHeading = function () {
-        const hour = ['Store', '6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
-        for (let i = 0; i < hour.length; i++) {
-            const tableTopRow = document.getElementById('tableTopRow');
-            const newTh = document.createElement('th');
-            newTh.textContent = hour[i];
-            tableTopRow.appendChild(newTh);
-        }
+    const hour = ['Store', '6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
+    for (let i = 0; i < hour.length; i++) {
+        const tableTopRow = document.getElementById('tableTopRow');
+        const newTh = document.createElement('th');
+        newTh.textContent = hour[i];
+        tableTopRow.appendChild(newTh);
+    }
 }
 
 const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');
@@ -49,6 +55,10 @@ airportLoc.makeTableHeading();
 const pioneerSqLoc = new CookieStand(3, 24, 1.2, "Pioneer Square");
 pioneerSqLoc.calc();
 
+// TODO - Move Pioneer Square line under Airport line.  I think I need to do something with
+//        nextSibling and an array, in the second for loop of the calc function.
+//      - Create instances of other locations, make sure they look right.
+//      - Calculate totals and add to table.
 
 ///////////////////////////////////////////////////////////////////////////////////////
 

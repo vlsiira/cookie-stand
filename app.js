@@ -26,16 +26,16 @@
 
 ///////////////Constructor/////////////////////////////////////////////////
 
-function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust) {
+function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
     this.minHrlyCust = minHrlyCust;
     this.maxHrlyCust = maxHrlyCust;
     this.avgCookiesCust = avgCookiesCust;
+    this.storeName = storeName;
     this.amntCookiesPurch = [];
-    this.hourOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
 }
 
 // This method was working, then it stopped working (I got undefined when calling airportLoc.calc();
-// in console).  Then I added line the return, and I got an array when calling the method, but it's not
+// in console).  Then I added the return, and I got an array when calling the method, but it's not
 // working the way it's supposed to.
 
 // ^^^TODO push random customer number * avg cookie number into amount cookies array
@@ -44,14 +44,13 @@ CookieStand.prototype.calc = function () {
     let max = Math.floor(this.maxHrlyCust);
     let hrlySale;
 
-    this.amntCookiesPurch.push('Airport');
-    
+    this.amntCookiesPurch.push(this.storeName);
     //for (let i = 0; i < this.hourOfDay.length; i++) {
         for (let i = 0; i < 15; i++) {
             hrlySale = Math.floor((Math.floor(Math.random() * (max - min)) + min) * this.avgCookiesCust);
-            this.amntCookiesPurch.push(hrlySale); 
+            this.amntCookiesPurch.push(hrlySale);
         }
-        const hour = ['', '6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
+        const hour = ['Store', '6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
         for (let i = 0; i < hour.length; i++) {
             const tableBody = document.querySelector('tbody');
             const newTd = document.createElement('td');
@@ -66,26 +65,39 @@ CookieStand.prototype.calc = function () {
         }
 }
 
-CookieStand.prototype.list = function () {
-    for (let i = 0; i < 15; i++) {
-        const airport = document.getElementById('airport');
-        const newLi = document.createElement('li');
-        newLi.textContent = this.hourOfDay[i] + this.amntCookiesPurch[i];
-        airport.appendChild(newLi);
-    }
-}
+// CookieStand.prototype.list = function () {
+//     for (let i = 0; i < 15; i++) {
+//         const airport = document.getElementById('airport');
+//         const newLi = document.createElement('li');
+//         newLi.textContent = this.hourOfDay[i] + this.amntCookiesPurch[i];
+//         airport.appendChild(newLi);
+//     }
+// }
 
+CookieStand.prototype.addToArr = function ()  {
+    const tableLoc = ['Airport', 'Pioneer Square', 'Powell\'s', 'St. John\'s', 'Waterfront'];
+    for (let i = 0; i < tableLoc.length; i++) {
+        this.amntCookiesPurch.push(tableLoc);
+    }
+
+
+    //this.amntCookiesPurch.push('Airport');
+}
 // ^^^TODO make the above info appear in list form
 
-const airportLoc = new CookieStand(23, 65, 6.3);
+const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');
 airportLoc.calc();
-airportLoc.list();
+//airportLoc.list();
+airportLoc.addToArr();
+
+const pioneerSqLoc = new CookieStand(3, 24, 1.2, "Pioneer Square");
+pioneerSqLoc.calc();
+//pioneerSqLoc.list();
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
 
 //const tableIds = ['tableHeading', 'tableAirport', 'tablePiSq', 'tablePowells', 'tableStJohns', 'tableWaterfront'];
-const tableLoc = ['Airport', 'Pioneer Square', 'Powell\'s', 'St. John\'s', 'Waterfront'];
 
 
 // for (let i = 0; i < hour.length; i++) {

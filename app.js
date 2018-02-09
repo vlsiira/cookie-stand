@@ -89,6 +89,17 @@ const waterfrontLoc = new CookieStand(2, 16, 4.6, 'Waterfront');
 waterfrontLoc.calc();
 waterfrontLoc.insertRows();
 
+/////////////////////////////////FORM////////////////////////////////////////////////////////
+
+function checkStoreName() {
+    //var targetName = e.targetName;
+    //console.log('stand-name');
+    console.log('listening');
+}
+
+const elStoreName = document.getElementById('stand-name');
+elStoreName.addEventListener('input', checkStoreName, false);
+
 ///////////////////////////////////////////////////////////////////////////////////////
 // const newTr = document.createElement('tr');
 //     tableTopRow.appendChild(newTr);

@@ -92,9 +92,8 @@ waterfrontLoc.insertRows();
 /////////////////////////////////FORM////////////////////////////////////////////////////////
 
 function checkStoreName() {
-    //var targetName = e.targetName;
-    //console.log('stand-name');
     console.log('listening');
+    console.log(elStoreName.value);
 }
 
 const elStoreName = document.getElementById('stand-name');

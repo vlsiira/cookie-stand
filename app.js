@@ -20,8 +20,8 @@ const airportLoc = {
     amntCookiesPurch: [],
     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
-console.log(airportLoc.amntCookiesPurch);
-console.log(airportLoc.hourOfDay);
+
+(airportLoc.getRandomNum());
 
 const pioneerSqLoc = {
     minHrlyCust: 3,
@@ -42,8 +42,7 @@ const pioneerSqLoc = {
     amntCookiesPurch: [],
     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
-console.log(pioneerSqLoc.getRandomNum());
-console.log(pioneerSqLoc.amntCookiesPurch);
+(pioneerSqLoc.getRandomNum());
 
 const powellsLoc = {
     minHrlyCust: 11,
@@ -64,8 +63,7 @@ const powellsLoc = {
     amntCookiesPurch: [],
     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
-console.log(powellsLoc.getRandomNum());
-console.log(powellsLoc.amntCookiesPurch);
+(powellsLoc.getRandomNum());
 
 const stJohnsLoc = {
     minHrlyCust: 20,
@@ -86,8 +84,7 @@ const stJohnsLoc = {
     amntCookiesPurch: [],
     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
-console.log(stJohnsLoc.getRandomNum());
-console.log(stJohnsLoc.amntCookiesPurch);
+(stJohnsLoc.getRandomNum());
 
 const waterfrontLoc = {
     minHrlyCust: 2,
@@ -108,5 +105,4 @@ const waterfrontLoc = {
     amntCookiesPurch: [],
     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
 };
-console.log(waterfrontLoc.getRandomNum());
-console.log(waterfrontLoc.amntCookiesPurch);
+(waterfrontLoc.getRandomNum());

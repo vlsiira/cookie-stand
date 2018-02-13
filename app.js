@@ -1,18 +1,5 @@
 'use strict';
 
-// TODO - add input field for each data piece in html
-//           - does this mean every square in the table is its own data piece?  probably not
-//           - or, are the data pieces the parameters from the constructor?
-//      - I should probably figure out what this form is actually supposed to do
-//           - now I sort of remember, it's supposed to let Pat add new stores.  So, Pat will
-//             add info into the form, and then the form will add that info into the table
-//      - returning to issues in first bullet point:
-//           - data pieces are the parameters from the constructor.  Now it makes sense.
-//             Since the form adds a new row to the table, Pat needs to provide the same info
-//             that he provided before, that created it in the first place.
-
-
-
 ///////////////Constructor/////////////////////////////////////////////////
 function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
     this.minHrlyCust = minHrlyCust;

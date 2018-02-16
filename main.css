@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #AA4639;
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+}
+
+#nav {
+    font-family: 'Source Sans Pro', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFB4AA;
+}
+
+#info-section {
+    display: flex;
+    font-family: 'Lora', serif;
+}

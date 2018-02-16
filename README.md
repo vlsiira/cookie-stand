@@ -1,1 +1,3 @@
-# cookie-stand
+#Week 2 Project: Salmon Cookies
+
+Pat, owner of Pat's Salmon Cookies, is planning to open several new cookie stands in Portland.  He would like to have a new website, including a public-facing page, and a sales page to help Pat manage the business.  The sales page needs to include a table with information about how many customers per hour can be expected at each location.  Pat also needs the sales page to have a form so that he can add new locations to the table.

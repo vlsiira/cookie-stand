@@ -7,6 +7,11 @@ body {
     background-color: #AA4639;
 }
 
+header {
+    display: flex;
+    align-items: center;
+}
+
 h1 {
     font-family: 'Lobster', cursive;
 }
@@ -16,4 +21,9 @@ h1 {
     display: flex;
     justify-content: space-between;
     background-color: #FFB4AA;
+}
+
+#info-section {
+    display: flex;
+    font-family: 'Lora', serif;
 }

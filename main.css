@@ -1,0 +1,16 @@
+/* * {
+    margin: 0;
+    padding: 0;
+} */
+
+.highlights-font {
+    font-family: 'Boogaloo', cursive;
+}
+
+.data-font {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.text-font {
+    font-family: 'Bitter', serif;
+}

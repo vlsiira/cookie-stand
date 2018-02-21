@@ -1,6 +1,5 @@
 'use strict';
 
-///////////////Constructor/////////////////////////////////////////////////
 function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
     this.minHrlyCust = minHrlyCust;
     this.maxHrlyCust = maxHrlyCust;
@@ -25,10 +24,10 @@ CookieStand.prototype.calc = function () {
 CookieStand.prototype.makeTableHeading = function () {
     const hour = ['Store', '6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ', 'Total:'];
     for (let i = 0; i < hour.length; i++) {
-        const tableTopRow = document.getElementById('tableTopRow');
+        const tableBody = document.getElementById('tableBody');
         const newTh = document.createElement('th');
         newTh.textContent = hour[i];
-        tableTopRow.appendChild(newTh);
+        tableBody.appendChild(newTh);
     }
 }
 
@@ -36,7 +35,7 @@ CookieStand.prototype.insertRows = function () {
     let count = 0;
     for (let i = -1; i < 17; i++) {
         const newRow = document.createElement('tr');
-        const newTh = document.getElementById('tableTopRow');
+        const newTh = document.getElementById('tableBody');
         const newTd = document.createElement('td');
         if (i < 0) {
             newTh.appendChild(newRow);              

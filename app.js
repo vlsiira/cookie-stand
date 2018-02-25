@@ -36,6 +36,11 @@ CookieStand.prototype.makeTableHeading = function () {
     tableBody.appendChild(newRow);
 }
 
+// TODO for Adding Form
+// - get the user input
+//      - does this need a separate function, like checkInput?
+//      - or can this be incorporated into insertRows function?
+// - get user input to work with insertRows function so that it can be added to table
 CookieStand.prototype.insertRows = function () {
     let count = 0;
     const tableBody = document.getElementById('tableBody');

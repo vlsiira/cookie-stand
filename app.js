@@ -36,13 +36,8 @@ CookieStand.prototype.makeTableHeading = function () {
     tableBody.appendChild(newRow);
 }
 
-// TODO for Adding Form
-// - get the user input
-//      - does this need a separate function, like checkInput?
-//      - or can this be incorporated into insertRows function?
-// - get user input to work with insertRows function so that it can be added to table
 CookieStand.prototype.insertRows = function () {
-    let count = 0;
+    let totals = 0;
     const tableBody = document.getElementById('tableBody');
     const newRow = document.createElement('tr');
     const newTh = document.createElement('th');
@@ -52,12 +47,24 @@ CookieStand.prototype.insertRows = function () {
         const newTd = document.createElement('td');
         newTd.textContent = this.amntCookiesPurch[i];
         newRow.appendChild(newTd);
-        count += this.amntCookiesPurch[i];
+        totals += this.amntCookiesPurch[i];
     }
     const totalsTd = document.createElement('td');
-    totalsTd.textContent = count;
+    totalsTd.textContent = totals;
     newRow.appendChild(totalsTd);
     tableBody.appendChild(newRow);
+}
+
+// TODO for Adding Form
+// - get the user input
+//     - getting with onblur.  not working with onsubmit.  does submit button somehow 
+//       need to be linked to the stand name form input?
+// - get user input to work with insertRows function so that it can be added to table
+//     - use return on checkUserInput to make user input available to insertRows function?
+//     - create td ele >>> text content (user input) >>> append child to newRow?
+
+function checkUserInput(inputField) {
+    console.log('user typed: ', inputField.value);
 }
 
 const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');

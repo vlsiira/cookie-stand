@@ -23,7 +23,7 @@
                 <legend>Add New Stand</legend>
 
                 <label for="stand-name">Stand Name</label>
-                <input type ="text" name ="stand-name" id="stand-name">
+                <input type ="text" name ="stand-name" id="stand-name" onblur="checkUserInput(this)">
 
                 <label for="minimum-hourly-customers">Minimum Hourly Customers</label>
                 <input type ="text" name ="minimum-hourly-customers" id="minimum-hourly-customers">
@@ -33,6 +33,8 @@
 
                 <label for="average-cookies-per-customer">Average Cookies Per Customer</label>
                 <input type ="text" name ="average-cookies-per-customer" id="average-cookies-per-customer">
+
+                <input type="submit" value="Submit" />
 
             </fieldset>
 

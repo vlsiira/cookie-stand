@@ -1,6 +1,7 @@
 'use strict';
 
-///////////////Constructor/////////////////////////////////////////////////
+const hours = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm'];
+
 function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
     this.minHrlyCust = minHrlyCust;
     this.maxHrlyCust = maxHrlyCust;
@@ -10,307 +11,68 @@ function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
 }
 
 CookieStand.prototype.calc = function () {
-    let min = Math.ceil(this.minHrlyCust);
-    let max = Math.floor(this.maxHrlyCust);
-    let hrlySale;
-
-    this.amntCookiesPurch.push(this.storeName);
-
-    for (let i = 0; i < 15; i++) {
-        hrlySale = Math.floor((Math.floor(Math.random() * (max - min)) + min) * this.avgCookiesCust);
+    const min = this.minHrlyCust;
+    const max = this.maxHrlyCust;
+    for (let i = 0; i < hours.length; i++) {
+        let hrlySale = Math.floor(((Math.random() * (max - min)) + min) * this.avgCookiesCust);
         this.amntCookiesPurch.push(hrlySale);
     }
 }
 
 CookieStand.prototype.makeTableHeading = function () {
-    const hour = ['Store', '6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ', 'Total:'];
-    for (let i = 0; i < hour.length; i++) {
-        const tableTopRow = document.getElementById('tableTopRow');
+    const tableBody = document.getElementById('tableBody');
+    const newRow = document.createElement('tr');
+    const storeHeading = document.createElement('th');
+    storeHeading.textContent = 'Store';
+    newRow.appendChild(storeHeading);
+    const totalHeading = document.createElement('th');
+    totalHeading.textContent = 'Totals';
+    for (let i = 0; i < hours.length; i++) {
         const newTh = document.createElement('th');
-        newTh.textContent = hour[i];
-        tableTopRow.appendChild(newTh);
+        newTh.textContent = hours[i];
+        newRow.appendChild(newTh);
     }
+    newRow.appendChild(totalHeading);
+    tableBody.appendChild(newRow);
 }
 
 CookieStand.prototype.insertRows = function () {
     let count = 0;
-    for (let i = -1; i < 17; i++) {
-        const newRow = document.createElement('tr');
-        const newTh = document.getElementById('tableTopRow');
+    const tableBody = document.getElementById('tableBody');
+    const newRow = document.createElement('tr');
+    const newTh = document.createElement('th');
+    newTh.textContent = this.storeName;
+    newRow.appendChild(newTh);
+    for (let i = 0; i < this.amntCookiesPurch.length; i++) {
         const newTd = document.createElement('td');
-        if (i < 0) {
-            newTh.appendChild(newRow);              
-        } else if (i === 0) {
-            newTd.textContent = this.amntCookiesPurch[i];
-            newTh.appendChild(newTd);
-        } else if (i === 16) {
-            newTd.textContent = count;
-            newTh.appendChild(newTd);
-            console.log(count);
-        } else {
-            count = count + this.amntCookiesPurch[i];
-            newTd.textContent = this.amntCookiesPurch[i];
-            newTh.appendChild(newTd);
-        }
+        newTd.textContent = this.amntCookiesPurch[i];
+        newRow.appendChild(newTd);
+        count += this.amntCookiesPurch[i];
     }
+    const totalsTd = document.createElement('td');
+    totalsTd.textContent = count;
+    newRow.appendChild(totalsTd);
+    tableBody.appendChild(newRow);
 }
 
 const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');
+const pioneerSqLoc = new CookieStand(3, 24, 1.2, "Pioneer Square");
+const powellsLoc = new CookieStand(11, 38, 3.7, 'Powell\'s');
+const stJohnsLoc = new CookieStand(20, 38, 2.3, 'St. John\'s');
+const waterfrontLoc = new CookieStand(2, 16, 4.6, 'Waterfront');
+
 airportLoc.makeTableHeading();
 airportLoc.calc();
 airportLoc.insertRows();
 
-const pioneerSqLoc = new CookieStand(3, 24, 1.2, "Pioneer Square");
 pioneerSqLoc.calc();
 pioneerSqLoc.insertRows();
 
-const powellsLoc = new CookieStand(11, 38, 3.7, 'Powell\'s');
 powellsLoc.calc();
 powellsLoc.insertRows();
 
-const stJohnsLoc = new CookieStand(20, 38, 2.3, 'St. John\'s');
 stJohnsLoc.calc();
 stJohnsLoc.insertRows();
 
-const waterfrontLoc = new CookieStand(2, 16, 4.6, 'Waterfront');
 waterfrontLoc.calc();
 waterfrontLoc.insertRows();
-
-/////////////////////////////////FORM////////////////////////////////////////////////////////
-
-function checkStoreName() {
-    console.log('listening');
-    console.log(elStoreName.value);
-}
-
-const elStoreName = document.getElementById('stand-name');
-elStoreName.addEventListener('input', checkStoreName, false);
-
-///////////////////////////////////////////////////////////////////////////////////////
-// const newTr = document.createElement('tr');
-//     tableTopRow.appendChild(newTr);
-//     const rowsToTable = document.querySelectorAll('tr');
-//     for (let i = 0; i < rowsToTable.length; i++) {
-    //         const newTd = document.createElement('td');
-    //         newTd.textContent = this.amntCookiesPurch[i];
-    //         rowsToTable[i].appendChild(newTd);
-    //     }
-    // }
-    
-//const tableBody = document.querySelector('tbody');
-        // const rowsToTable = document.querySelectorAll('tr');
-        // for (let i = 0; i < rowsToTable.length; i++) {
-            //     rowsToTable[i].appendChild(newTd);
-            // }
-        //makes 5 tr
-        // for (let i = 0; i < 5; i++) {
-        //     const newTr = document.createElement('tr');
-        //     tableTopRow.appendChild(newTr);
-        // }
-    
-        // // make 15 td under each tr.
-        // for (let i = 0; i < 15; i++) {
-        //     const newTd = document.createElement('td');
-        //     newTr.appendChild(newTd);
-        //     newTd.textContent = this.amntCookiesPurch[i];
-        // }
-        
-//const tableIds = ['tableHeading', 'tableAirport', 'tablePiSq', 'tablePowells', 'tableStJohns', 'tableWaterfront'];
-//pioneerSqLoc.list();
-//airportLoc.list();
-//airportLoc.addToArr();
-
-
-// for (let i = 0; i < hour.length; i++) {
-//     const tableBody = document.querySelector('tbody');
-//     const newTd = document.createElement('td');
-//     newTd.textContent = this.amntCookiesPurch[i];
-//     tableBody.appendChild(newTd);
-// }
-
-
-
-// for (let i = 0; i < hour.length; i++) {
-//     const tableRows = getElementsByTagName('tr');
-//     const newTh = document.createElement('th');
-//     newTh.textContent = tableLoc[i];
-//     tableRows.appendChild(newTh);
-// }
-
-// TODO create table
-//       -times in array              -this.hourOfDay
-//       -loop through array
-//       -use getElement
-//       -make data display in table
-
-// TODO create new instances of CookieStand for other stores
-
-// TODO calculate totals for each store
-
-// const pioneerSqLoc = {
-//     minHrlyCust: 3,
-//     maxHrlyCust: 24,
-//     avgCookiesCust: 1.2,
-//     getRandomNum: function () {
-//         this.minHrlyCust = Math.ceil(this.minHrlyCust);
-//         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-//         for (let i = 0; i < this.hourOfDay.length; i++) {
-//             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
-//         }
-//         for(let i = 0; i < pioneerSqLoc.hourOfDay.length; i++) {
-//             const pioneerSq = document.getElementById('pioneerSq');
-//             const secondLi = document.createElement('li');
-//             secondLi.textContent = pioneerSqLoc.hourOfDay[i] + pioneerSqLoc.amntCookiesPurch[i];
-//             pioneerSq.appendChild(secondLi);
-//         }
-//     },
-//     amntCookiesPurch: [],
-//     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
-// };
-// pioneerSqLoc.getRandomNum();
-// console.log(pioneerSqLoc.amntCookiesPurch);
-
-// const powellsLoc = {
-//     minHrlyCust: 11,
-//     maxHrlyCust: 38,
-//     avgCookiesCust: 3.7,
-//     getRandomNum: function () {
-//         this.minHrlyCust = Math.ceil(this.minHrlyCust);
-//         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-//         for (let i = 0; i < this.hourOfDay.length; i++) {
-//             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
-//         }
-//         for (let i = 0; i < powellsLoc.hourOfDay.length; i++) {
-//             const powells = document.getElementById('powells');
-//             const thirdLi = document.createElement('li');
-//             thirdLi.textContent = powellsLoc.hourOfDay[i] + powellsLoc.amntCookiesPurch[i];
-//             powells.appendChild(thirdLi);
-//         }
-//     },
-//     amntCookiesPurch: [],
-//     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
-// };
-// powellsLoc.getRandomNum();
-// console.log(powellsLoc.amntCookiesPurch);
-
-// const stJohnsLoc = {
-//     minHrlyCust: 20,
-//     maxHrlyCust: 38,
-//     avgCookiesCust: 2.3,
-//     getRandomNum: function () {
-//         this.minHrlyCust = Math.ceil(this.minHrlyCust);
-//         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-//         for (let i = 0; i < this.hourOfDay.length; i++) {
-//             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
-//         }
-//         for (let i = 0; i < stJohnsLoc.hourOfDay.length; i++) {
-//             const stJohns = document.getElementById('stJohns');
-//             const fourthLi = document.createElement('li');
-//             fourthLi.textContent = stJohnsLoc.hourOfDay[i] + stJohnsLoc.amntCookiesPurch[i];
-//             stJohns.appendChild(fourthLi);
-//         }
-//     },
-//     amntCookiesPurch: [],
-//     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
-// };
-// stJohnsLoc.getRandomNum();
-// console.log(stJohnsLoc.amntCookiesPurch);
-
-// const waterfrontLoc = {
-//     minHrlyCust: 2,
-//     maxHrlyCust: 16,
-//     avgCookiesCust: 4.6,
-//     getRandomNum: function () {
-//         this.minHrlyCust = Math.ceil(this.minHrlyCust);
-//         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-//         for (let i = 0; i < this.hourOfDay.length; i++) {
-//             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
-//         }
-//         for (let i = 0; i < waterfrontLoc.hourOfDay.length; i++) {
-//             const waterfront = document.getElementById('waterfront');
-//             const fifthLi = document.createElement('li');
-//             fifthLi.textContent = waterfrontLoc.hourOfDay[i] + waterfrontLoc.amntCookiesPurch[i];
-//             waterfront.appendChild(fifthLi);
-//         }
-//     },
-//     amntCookiesPurch: [],
-//     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
-// };
-// waterfrontLoc.getRandomNum();
-// console.log(waterfrontLoc.amntCookiesPurch);
-
-// //##################### Practice #####################################################################
-
-// // object literal- this worked
-
-// // const basket = {
-// //     name: 'gift basket',
-// //     apples: 6,
-// //     bananas: 3,
-// //     log: function () {
-// //         console.log(this.name);
-// //     },
-// //     addFruit: function () {
-// //         return this.apples + this.bananas;
-// //     }
-// // };
-
-// // basket.log();
-// // basket.addFruit();
-
-////////////////////Lines I might want later///////////////////////////////////////////////
-// console.log(airportLoc.calc());
-//CookieStand.amntCookiesPurch = [];
-//console.log(CookieStand.amntCookiesPurch);
-//const hourOfDay = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: '];
-        //this.amntCookiesPurch.push((Math.floor(Math.random() * (max - min + 1)) + min) * Math.round(this.avgCookiesCust));
-///
-// This method was working, then it stopped working (I got undefined when calling airportLoc.calc();
-// in console).  Then I added the return, and I got an array when calling the method, but it's not
-// working the way it's supposed to.
-
-// DONT NEED
-// CookieStand.prototype.addToArr = function ()  {
-//     const tableLoc = ['Airport', 'Pioneer Square', 'Powell\'s', 'St. John\'s', 'Waterfront'];
-//     for (let i = 0; i < tableLoc.length; i++) {
-//         this.amntCookiesPurch.push(tableLoc);
-//     }
-// }
-// ^^^T
-// CookieStand.prototype.list = function () {
-//     for (let i = 0; i < 15; i++) {
-//         const airport = document.getElementById('airport');
-//         const newLi = document.createElement('li');
-//         newLi.textContent = this.hourOfDay[i] + this.amntCookiesPurch[i];
-//         airport.appendChild(newLi);
-//     }
-// }
-        //for (let i = 0; i < this.hourOfDay.length; i++) {
-// const airportLoc = {
-//     minHrlyCust: 23,
-//     maxHrlyCust: 65,
-//     avgCookiesCust: 6.3,
-//     getRandomNum: function () {
-//         this.minHrlyCust = Math.ceil(this.minHrlyCust);
-//         this.maxHrlyCust = Math.floor(this.maxHrlyCust);
-//         for (let i = 0; i < this.hourOfDay.length; i++) {
-//             this.amntCookiesPurch.push((Math.floor(Math.random() * (this.maxHrlyCust - this.minHrlyCust + 1)) + this.minHrlyCust) * Math.round(this.avgCookiesCust));
-//         }
-//         for (let i = 0; i < airportLoc.hourOfDay.length; i++) {
-//             const airport = document.getElementById('airport');
-//             const newLi = document.createElement('li');
-//             newLi.textContent = airportLoc.hourOfDay[i] + airportLoc.amntCookiesPurch[i];
-//             airport.appendChild(newLi);
-//         }
-//     },
-//     amntCookiesPurch: [],
-//     hourOfDay: ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ']
-// };
-// airportLoc.getRandomNum();
-// console.log(airportLoc.amntCookiesPurch);
-//console.log(airportLoc.hourOfDay);
-// 
-// TODO - Move Pioneer Square line under Airport line.  I think I need to do something with
-//        nextSibling and an array, in the second for loop of the calc function.
-//      - Create instances of other locations, make sure they look right.
-//      - Calculate totals and add to table.

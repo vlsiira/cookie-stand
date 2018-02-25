@@ -14,3 +14,8 @@
 .text-font {
     font-family: 'Bitter', serif;
 }
+
+img {
+    width: 150px;
+    height: 150px;
+}

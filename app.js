@@ -1,5 +1,7 @@
 'use strict';
 
+const hours = ['6 am', '7 am', '8 am', '9 am', '10 am', '11 am', '12 pm', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm'];
+
 function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
     this.minHrlyCust = minHrlyCust;
     this.maxHrlyCust = maxHrlyCust;
@@ -8,32 +10,29 @@ function CookieStand (minHrlyCust, maxHrlyCust, avgCookiesCust, storeName) {
     this.amntCookiesPurch = [];
 }
 
-const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');
-const pioneerSqLoc = new CookieStand(3, 24, 1.2, "Pioneer Square");
-const powellsLoc = new CookieStand(11, 38, 3.7, 'Powell\'s');
-const stJohnsLoc = new CookieStand(20, 38, 2.3, 'St. John\'s');
-const waterfrontLoc = new CookieStand(2, 16, 4.6, 'Waterfront');
-
 CookieStand.prototype.calc = function () {
-    let min = Math.ceil(this.minHrlyCust);
-    let max = Math.floor(this.maxHrlyCust);
-    let hrlySale;
-
-    for (let i = 0; i < 15; i++) {
-        hrlySale = Math.floor((Math.floor(Math.random() * (max - min)) + min) * this.avgCookiesCust);
+    const min = this.minHrlyCust;
+    const max = this.maxHrlyCust;
+    for (let i = 0; i < hours.length; i++) {
+        let hrlySale = Math.floor(((Math.random() * (max - min)) + min) * this.avgCookiesCust);
         this.amntCookiesPurch.push(hrlySale);
     }
 }
 
 CookieStand.prototype.makeTableHeading = function () {
-    const hour = ['Store', '6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: ', '8pm: ', 'Total:'];
     const tableBody = document.getElementById('tableBody');
     const newRow = document.createElement('tr');
-    for (let i = 0; i < hour.length; i++) {
+    const storeHeading = document.createElement('th');
+    storeHeading.textContent = 'Store';
+    newRow.appendChild(storeHeading);
+    const totalHeading = document.createElement('th');
+    totalHeading.textContent = 'Totals';
+    for (let i = 0; i < hours.length; i++) {
         const newTh = document.createElement('th');
-        newTh.textContent = hour[i];
+        newTh.textContent = hours[i];
         newRow.appendChild(newTh);
     }
+    newRow.appendChild(totalHeading);
     tableBody.appendChild(newRow);
 }
 
@@ -46,15 +45,21 @@ CookieStand.prototype.insertRows = function () {
     newRow.appendChild(newTh);
     for (let i = 0; i < this.amntCookiesPurch.length; i++) {
         const newTd = document.createElement('td');
-            newTd.textContent = this.amntCookiesPurch[i];
-            newRow.appendChild(newTd);
-            count = count + this.amntCookiesPurch[i];
-        }
+        newTd.textContent = this.amntCookiesPurch[i];
+        newRow.appendChild(newTd);
+        count += this.amntCookiesPurch[i];
+    }
     const totalsTd = document.createElement('td');
     totalsTd.textContent = count;
     newRow.appendChild(totalsTd);
     tableBody.appendChild(newRow);
 }
+
+const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');
+const pioneerSqLoc = new CookieStand(3, 24, 1.2, "Pioneer Square");
+const powellsLoc = new CookieStand(11, 38, 3.7, 'Powell\'s');
+const stJohnsLoc = new CookieStand(20, 38, 2.3, 'St. John\'s');
+const waterfrontLoc = new CookieStand(2, 16, 4.6, 'Waterfront');
 
 airportLoc.makeTableHeading();
 airportLoc.calc();

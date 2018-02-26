@@ -4,15 +4,42 @@
     padding: 0; */
     background-color: #CC5836;
     max-width: 960px;
-    margin: 20px auto 20px auto;
+    margin: 10px auto;
 }
 
-header, #voice, #typography, #color-palette {
+/* body {
+    position: relative;    
+} */
+
+header, section, #voice, #typography, #color-palette {
     border: 1px dashed black;
 }
 
 header, header h1, header h2 {
     background-color: #A93B1B;
+}
+
+section, section h3, section p {
+    background-color: #E77B5C;
+    color: #340C00;
+}
+
+section h3 {
+    display: inline;
+    /* margin: 20px, 20px; */
+}
+
+#info-section-1 p {
+    max-width: 500px;
+    min-height: 200px;
+}
+
+#fish-cookie {
+    float: left;
+}
+
+#t-shirt {
+    float: right;
 }
 
 .highlights-font {

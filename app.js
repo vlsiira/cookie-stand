@@ -37,7 +37,7 @@ CookieStand.prototype.makeTableHeading = function () {
 }
 
 CookieStand.prototype.insertRows = function () {
-    let count = 0;
+    let totals = 0;
     const tableBody = document.getElementById('tableBody');
     const newRow = document.createElement('tr');
     const newTh = document.createElement('th');
@@ -47,12 +47,22 @@ CookieStand.prototype.insertRows = function () {
         const newTd = document.createElement('td');
         newTd.textContent = this.amntCookiesPurch[i];
         newRow.appendChild(newTd);
-        count += this.amntCookiesPurch[i];
+        totals += this.amntCookiesPurch[i];
     }
     const totalsTd = document.createElement('td');
-    totalsTd.textContent = count;
+    totalsTd.textContent = totals;
     newRow.appendChild(totalsTd);
     tableBody.appendChild(newRow);
+}
+
+function addStore(inputField) {
+    const standName = inputField.form.elements['stand-name'].value;
+    const minimumHourlyCustomers = inputField.form.elements['minimum-hourly-customers'].value;
+    const maximumHourlyCustomers = inputField.form.elements['maximum-hourly-customers'].value;
+    const averageCookiesCustomer = inputField.form.elements['average-cookies-per-customer'].value;
+    const newStore = new CookieStand(minimumHourlyCustomers, maximumHourlyCustomers, averageCookiesCustomer, standName);
+    newStore.calc();
+    newStore.insertRows();
 }
 
 const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');

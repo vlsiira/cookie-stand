@@ -1,29 +1,35 @@
-/* * {
-    margin: 0;
-    padding: 0;
+
+* {
+    /* margin: 0;
+    padding: 0; */
+    background-color: #CC5836;
+    max-width: 960px;
+    margin: 20px auto 20px auto;
 }
 
-body {
-    background-color: #AA4639;
+header, #voice, #typography, #color-palette {
+    border: 1px dashed black;
 }
 
-header {
-    display: flex;
-    align-items: center;
+header, header h1, header h2 {
+    background-color: #A93B1B;
 }
 
-h1 {
-    font-family: 'Lobster', cursive;
+.highlights-font {
+    font-family: 'Boogaloo', cursive;
+    color: #FFE1D8;
 }
 
-#nav {
-    font-family: 'Source Sans Pro', sans-serif;
-    display: flex;
-    justify-content: space-between;
-    background-color: #FFB4AA;
+.data-font {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
-#info-section {
-    display: flex;
-    font-family: 'Lora', serif;
-} */
+.text-font {
+    font-family: 'Bitter', serif;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
+

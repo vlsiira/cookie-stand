@@ -55,16 +55,14 @@ CookieStand.prototype.insertRows = function () {
     tableBody.appendChild(newRow);
 }
 
-// TODO for Adding Form
-// - get the user input
-//     - getting with onblur.  not working with onsubmit.  does submit button somehow 
-//       need to be linked to the stand name form input?
-// - get user input to work with insertRows function so that it can be added to table
-//     - use return on checkUserInput to make user input available to insertRows function?
-//     - create td ele >>> text content (user input) >>> append child to newRow?
-
-function checkUserInput(inputField) {
-    console.log('user typed: ', inputField.value);
+function addStore(inputField) {
+    const standName = inputField.form.elements['stand-name'].value;
+    const minimumHourlyCustomers = inputField.form.elements['minimum-hourly-customers'].value;
+    const maximumHourlyCustomers = inputField.form.elements['maximum-hourly-customers'].value;
+    const averageCookiesCustomer = inputField.form.elements['average-cookies-per-customer'].value;
+    const newStore = new CookieStand(minimumHourlyCustomers, maximumHourlyCustomers, averageCookiesCustomer, standName);
+    newStore.calc();
+    newStore.insertRows();
 }
 
 const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');

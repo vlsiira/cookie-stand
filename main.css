@@ -1,22 +1,46 @@
-
 * {
-    /* margin: 0;
-    padding: 0; */
     background-color: #CC5836;
     max-width: 960px;
     margin: 10px auto;
 }
 
-/* body {
+body {
     position: relative;    
-} */
-
-header, section, #voice, #typography, #color-palette {
-    border: 1px dashed black;
 }
+
+/* header, section, #voice, #typography, #color-palette {
+    border: 1px dashed black;
+} */
 
 header, header h1, header h2 {
     background-color: #A93B1B;
+}
+
+header {
+    position: relative;
+    min-height: 170px;
+}
+
+header h1, header img {
+    position: absolute;
+}
+
+header h1 {
+    left: 327px;
+    top: 50px;
+}
+
+#cookie-cutter {
+    left: 707px;
+}
+
+#school {
+    left: 100px;
+}
+
+#nav h3 {
+    margin: 57px;
+    left: 20px;
 }
 
 section, section h3, section p {
@@ -26,20 +50,28 @@ section, section h3, section p {
 
 section h3 {
     display: inline;
-    /* margin: 20px, 20px; */
 }
 
-#info-section-1 p {
-    max-width: 500px;
-    min-height: 200px;
+#info-section-1 {
+    min-height: 170px;
+}
+
+#info-section-2 {
+    min-height: 170px;
+}
+
+#info-section-2 p {
+    margin: 10px;
 }
 
 #fish-cookie {
     float: left;
+    margin: 10px;
 }
 
 #t-shirt {
     float: right;
+    margin: 10px;
 }
 
 .highlights-font {
@@ -60,3 +92,18 @@ img {
     height: 150px;
 }
 
+#salmon-pic {
+    width: 600px;
+    height: 200px;
+    position: absolute;
+    left: 150px;
+}
+
+#family-pic {
+    width: 350px;
+    height: 200px;
+}
+
+/* table {
+    background-color: #821F03;
+} */

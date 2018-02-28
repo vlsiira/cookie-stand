@@ -38,9 +38,10 @@ header h1 {
     left: 100px;
 }
 
-#nav h3 {
+nav h3 {
+    display: inline;
     margin: 57px;
-    left: 20px;
+    /* left: 20px; */
 }
 
 section, section h3, section p {

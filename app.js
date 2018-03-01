@@ -67,7 +67,7 @@ function addStore(inputField) {
 }
 
 const airportLoc = new CookieStand(23, 65, 6.3, 'Airport');
-const pioneerSqLoc = new CookieStand(3, 24, 1.2, "Pioneer Square");
+const pioneerSqLoc = new CookieStand(3, 24, 1.2, 'Pioneer Square');
 const powellsLoc = new CookieStand(11, 38, 3.7, 'Powell\'s');
 const stJohnsLoc = new CookieStand(20, 38, 2.3, 'St. John\'s');
 const waterfrontLoc = new CookieStand(2, 16, 4.6, 'Waterfront');

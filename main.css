@@ -96,8 +96,8 @@ img {
 #salmon-pic {
     width: 600px;
     height: 200px;
-    position: absolute;
-    left: 150px;
+    display: block;
+    margin: 0 auto;
 }
 
 #family-pic {

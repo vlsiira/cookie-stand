@@ -62,7 +62,11 @@ section h3 {
 }
 
 #info-section-2 p {
-    margin: 10px;
+    padding-left: 10px;
+}
+
+p {
+    padding: 5px;
 }
 
 #fish-cookie {
